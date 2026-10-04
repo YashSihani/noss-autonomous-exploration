@@ -1,0 +1,20 @@
+cat << 'EOF' > .gitignore
+# Build and install artifacts
+build/
+install/
+log/
+
+# Python bytecode & cache
+__pycache__/
+*.pyc
+*.egg-info/
+
+# C++ compiled files
+*.o
+*.so
+
+# Editor / IDE files
+.vscode/
+.idea/
+.DS_Store
+EOF
