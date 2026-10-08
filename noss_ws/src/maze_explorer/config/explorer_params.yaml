@@ -1,0 +1,78 @@
+# Loaded by the launch file. The top-level key must match the node name (explorer_node).
+explorer_node:
+  ros__parameters:
+    # ---- frames ----
+    map_frame: map
+    robot_base_frame: base_footprint
+    camera_frame: camera_link          # NOT camera_link_optical
+
+    # ---- loop rates (Optimized for Pi 5 CPU) ----
+    eval_rate_hz: 2.0                  # Lowered from 4.0 to save CPU
+    coverage_rate_hz: 5.0              # Lowered from 10.0 to save CPU
+
+    # ---- camera model ----
+    use_dual_cameras: True             # Generates the virtual rear camera!
+    camera_hfov_deg: 90.0
+    camera_range_m: 2.5
+
+    # ---- coverage targets ----
+    min_unseen_area_m2: 0.6            
+    unseen_open_m: 0.3                 
+    unseen_refresh_s: 1.0              # CPU saver: limits how often unseen math runs
+    inspect_depth_m: 1.0               
+    visited_radius_m: 0.4              # Shrunk so nested doorways aren't accidentally excluded
+
+    # ---- sweep ----
+    max_sweeps: 3
+    sweep_yaw_step_deg: 20.0
+    min_sweep_area_m2: 0.15            
+
+    # ---- commit / preemption (Fixed stuttering) ----
+    commit_radius_inspect_m: 2.0       
+    commit_radius_frontier_m: 0.8      # Increased from 0.3 so it commits sooner and smoothly glides in
+    preempt_margin_m: 0.5
+    preempt_ratio: 0.5
+    preempt_room_margin_m: 0.5
+    preempt_confirm_s: 2.0             # Requires a target to be better for 2 full seconds before swapping
+    goal_validity_radius_m: 1.0
+    min_goal_interval_s: 0.75
+    goal_timeout_s: 120.0
+
+    # ---- frontier extraction / scoring (Aggressive DFS) ----
+    min_frontier_length_meters: 0.4    
+    denoise_kernel_size: 3
+    robot_clearance_m: 0.3             
+    cluster_merge_cells: 3
+    w_dist: 10.0
+    w_size: 0.0
+    
+    # DFS TUNING WEIGHTS:
+    w_angle: 15.0                      # Massive penalty for turning. Forces straight-line DFS.
+    reverse_penalty_m: 4.0             # Massive penalty for U-turns. Stops backtracking.
+    unseen_score_penalty_m: 0.0        # Removed the penalty that was repelling the robot from rooms
+    passing_door_bonus_m: 6.0          # "Suction" bonus that perfectly cancels out w_angle so it still enters rooms
+    passing_door_radius_m: 5.0         # Distance at which the room suction begins to activate
+
+    # ---- reachability check ----
+    path_check_enabled: true           
+    path_check_top_k: 3                
+    path_check_top_k_finding: 6
+    path_check_small_list_threshold: 8
+    path_cache_ttl_s: 8.0
+    unreachable_ttl_s: 8.0             
+    unreachable_max_fails: 5           # Give up a bit slower (was 3)
+    unreachable_hard_ttl_s: 120.0
+
+    # ---- blacklist / termination ----
+    blacklist_duration_s: 20.0         # Try failed goals again sooner (was 45)
+    blacklist_radius_m: 0.6
+    complete_confirmations: 10         # Adjusted for the new 2.0hz eval rate
+    unreachable_retry_rounds: 3
+    
+    frontier_standoff_m: 0.0           # Stop EXACTLY on the frontier edge (was 0.5)
+    room_ray_range_m: 6.0              
+    room_max_open_rays: 3              
+    
+    # ---- debug scoreboard ----
+    scoreboard_enabled: True           # Keep this True while testing!
+    scoreboard_period_s: 2.0
