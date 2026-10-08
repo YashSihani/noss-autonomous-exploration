@@ -1,0 +1,60 @@
+# Loaded by the launch file. The top-level key must match the node name (explorer_node).
+explorer_node:
+  ros__parameters:
+    # ---- frames (from your logs: planar_move publishes odom -> base_footprint) ----
+    map_frame: map
+    robot_base_frame: base_footprint
+    camera_frame: camera_link          # NOT camera_link_optical (its axes are rotated)
+
+    # ---- loop rates ----
+    eval_rate_hz: 4.0                  # keep >= 2 or preemption gets too slow
+    coverage_rate_hz: 10.0             # how often the camera view is ray-cast
+
+    # ---- camera model: MEASURE THESE ----
+    # horizontal fov: copy <horizontal_fov> from the camera plugin in your URDF (radians) and
+    # convert to degrees (1.2 rad = 68.8 deg). range: how far away it reliably spots a person.
+    camera_hfov_deg: 70.0
+    camera_range_m: 3.5
+
+    # ---- coverage targets ----
+    min_unseen_area_m2: 0.6            # ignore unseen patches smaller than this
+    unseen_open_m: 0.3                 # removes thin unseen slivers along walls
+    inspect_depth_m: 1.0               # how far into a room the robot drives
+    visited_radius_m: 1.0              # don't re-target a viewpoint already finished
+
+    # ---- sweep (spin in place after reaching a room viewpoint) ----
+    max_sweeps: 3
+    sweep_yaw_step_deg: 20.0
+    min_sweep_area_m2: 0.15            # stop sweeping when less than this is left to see
+
+    # ---- commit / preemption ----
+    commit_radius_inspect_m: 2.0       # rooms: once this close, finish no matter what
+    commit_radius_frontier_m: 1.0
+    preempt_margin_m: 0.5
+    goal_validity_radius_m: 1.0
+    min_goal_interval_s: 0.75
+    goal_timeout_s: 120.0
+
+    # ---- frontier extraction / scoring (distance-only, depth-first) ----
+    min_frontier_length_meters: 0.4    # noise vs doorway cutoff
+    denoise_kernel_size: 3
+    robot_clearance_m: 0.3            # robot inscribed radius is 0.304; door centre is ~0.4 m from walls
+    cluster_merge_cells: 3
+    w_dist: 10.0
+    w_size: 0.0
+    w_angle: 0.5
+
+    # ---- reachability check: asks Nav2's planner before committing to a goal ----
+    path_check_enabled: true           # skips unreachable goals, scores by real path length
+    path_check_top_k: 3                # candidates verified per tick
+    path_cache_ttl_s: 8.0
+    unreachable_ttl_s: 8.0             # first "unreachable" answers retry quickly (could be costmap lag)
+    unreachable_max_fails: 3           # this many in a row = really unreachable
+    unreachable_hard_ttl_s: 120.0
+
+    # ---- blacklist / termination ----
+    blacklist_duration_s: 45.0
+    blacklist_radius_m: 0.6
+    complete_confirmations: 20         # ~5 s of nothing left at 4 Hz
+    frontier_standoff_m: 0.5           # stop this far before the unknown edge
+    room_ray_range_m: 6.0              # room test: every direction ends at a wall within this

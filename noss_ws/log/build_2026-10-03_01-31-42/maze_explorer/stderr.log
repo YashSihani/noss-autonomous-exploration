@@ -1,0 +1,7 @@
+/home/yash/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:289: UserWarning: Unknown distribution option: 'tests_require'
+  warnings.warn(msg)
+  File "/home/yash/noss_ws/install/maze_explorer/lib/python3.10/site-packages/maze_explorer/explorer_node.py", line 650
+    f"Goal[{t.kind}{"/room" if room else ""}] -> ({t.goal[0]:.2f}, {t.goal[1]:.2f}) yaw={math.degrees(yaw):.0f}deg "
+                     ^
+SyntaxError: f-string: expecting '}'
+

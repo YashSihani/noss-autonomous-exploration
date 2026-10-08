@@ -1,0 +1,36 @@
+[0.575s] Invoking command in '/home/yash/noss_ws/src/maze_explorer': PYTHONPATH=/home/yash/noss_ws/build/maze_explorer/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yash/noss_ws/install/maze_explorer/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/maze_explorer build --build-base /home/yash/noss_ws/build/maze_explorer/build install --record /home/yash/noss_ws/build/maze_explorer/install.log --install-scripts $base/lib/maze_explorer --single-version-externally-managed install_data
+[0.693s] /home/yash/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:289: UserWarning: Unknown distribution option: 'tests_require'
+[0.693s]   warnings.warn(msg)
+[0.774s] running egg_info
+[0.787s] writing ../../build/maze_explorer/maze_explorer.egg-info/PKG-INFO
+[0.787s] writing dependency_links to ../../build/maze_explorer/maze_explorer.egg-info/dependency_links.txt
+[0.787s] writing requirements to ../../build/maze_explorer/maze_explorer.egg-info/requires.txt
+[0.788s] writing top-level names to ../../build/maze_explorer/maze_explorer.egg-info/top_level.txt
+[0.816s] reading manifest file '../../build/maze_explorer/maze_explorer.egg-info/SOURCES.txt'
+[0.817s] writing manifest file '../../build/maze_explorer/maze_explorer.egg-info/SOURCES.txt'
+[0.817s] running build
+[0.817s] running build_py
+[0.817s] copying maze_explorer/__init__.py -> /home/yash/noss_ws/build/maze_explorer/build/lib/maze_explorer
+[0.817s] copying maze_explorer/explorer_node.py -> /home/yash/noss_ws/build/maze_explorer/build/lib/maze_explorer
+[0.818s] running install
+[0.821s] running install_lib
+[0.834s] running install_data
+[0.835s] copying resource/maze_explorer -> /home/yash/noss_ws/install/maze_explorer/share/ament_index/resource_index/packages
+[0.835s] copying package.xml -> /home/yash/noss_ws/install/maze_explorer/share/maze_explorer
+[0.835s] copying launch/maze_sim.launch.py -> /home/yash/noss_ws/install/maze_explorer/share/maze_explorer/launch
+[0.835s] copying urdf/robot.urdf -> /home/yash/noss_ws/install/maze_explorer/share/maze_explorer/urdf
+[0.835s] copying worlds/maze.world -> /home/yash/noss_ws/install/maze_explorer/share/maze_explorer/worlds
+[0.836s] copying worlds/maze1.world -> /home/yash/noss_ws/install/maze_explorer/share/maze_explorer/worlds
+[0.836s] copying meshes/caster_wheel.stl -> /home/yash/noss_ws/install/maze_explorer/share/maze_explorer/meshes
+[0.836s] copying meshes/wheel.stl -> /home/yash/noss_ws/install/maze_explorer/share/maze_explorer/meshes
+[0.837s] copying meshes/caster_part.stl -> /home/yash/noss_ws/install/maze_explorer/share/maze_explorer/meshes
+[0.838s] copying meshes/bot_body.stl -> /home/yash/noss_ws/install/maze_explorer/share/maze_explorer/meshes
+[0.838s] copying meshes/bot_body_ascii.stl -> /home/yash/noss_ws/install/maze_explorer/share/maze_explorer/meshes
+[0.838s] copying config/nav2_params.yaml -> /home/yash/noss_ws/install/maze_explorer/share/maze_explorer/config
+[0.838s] copying config/slam_param.yaml -> /home/yash/noss_ws/install/maze_explorer/share/maze_explorer/config
+[0.838s] running install_egg_info
+[0.853s] removing '/home/yash/noss_ws/install/maze_explorer/lib/python3.10/site-packages/maze_explorer-0.0.0-py3.10.egg-info' (and everything under it)
+[0.853s] Copying ../../build/maze_explorer/maze_explorer.egg-info to /home/yash/noss_ws/install/maze_explorer/lib/python3.10/site-packages/maze_explorer-0.0.0-py3.10.egg-info
+[0.853s] running install_scripts
+[0.955s] writing list of installed files to '/home/yash/noss_ws/build/maze_explorer/install.log'
+[0.979s] Invoked command in '/home/yash/noss_ws/src/maze_explorer' returned '0': PYTHONPATH=/home/yash/noss_ws/build/maze_explorer/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yash/noss_ws/install/maze_explorer/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/maze_explorer build --build-base /home/yash/noss_ws/build/maze_explorer/build install --record /home/yash/noss_ws/build/maze_explorer/install.log --install-scripts $base/lib/maze_explorer --single-version-externally-managed install_data
